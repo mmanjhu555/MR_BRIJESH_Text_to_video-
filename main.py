@@ -74,27 +74,27 @@ async def main():
     except (KeyboardInterrupt, SystemExit):
         await stop_bot()
     
-@bot.on_message(filters.command(["start"]))
+@bot.on_message(filters.command(["monu"]))
 async def account_login(bot: Client, m: Message):
     editable = await m.reply_text(
-       "I Am A Bot For Download Links From Your **.TXT** File And Then Upload That File On Telegram So Basically If You Want To Use Me First Send Me ⟰ /saini Command And Then Follow Few Steps..", reply_markup=InlineKeyboardMarkup(
+       "I Am A Bot For Download Links From Your **.TXT** File And Then Upload That File On Telegram So Basically If You Want To Use Me First Send Me ⟰ /monu Command And Then Follow Few Steps..", reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("✜ 𝐉𝐨𝐢𝐧 𝐔𝐩𝐃𝐚𝐭𝐞 Group 🥱✜" ,url=f"https://t.me/+qutXY5xbN0I4OWY1") ],
+                    InlineKeyboardButton(" bot ka malik 😎 " ,url=f"https://t.me/monuchoudhary008") ],
                     [
-                    InlineKeyboardButton("✜ BRIJESH ✜" ,url="http://t.me/Oye_brijesh") ],
+                    InlineKeyboardButton("aaja bhai ❤️" ,url="http://t.me/monuchoudhary008") ],
                     [
-                    InlineKeyboardButton("FOLLOW " ,url="no") ]                               
+                    InlineKeyboardButton("कुछ काम था 🤔" ,url="http://t.me/monuchoudhary008") ]                               
             ]))
 
 @bot.on_message(filters.command(["stop"]))
 async def restart_handler(_, m):
-    await m.reply_text("♦ 𝐒𝐭𝐨𝐩ped 💞 ♦", True)
+    await m.reply_text(" रुक गया मोनू भाई 😊", True)
     os.execl(sys.executable, sys.executable, *sys.argv)
 
 
 
-@bot.on_message(filters.command(["brijesh"]))
+@bot.on_message(filters.command(["monu"]))
 
 async def upload(bot: Client, m: Message):
     editable = await m.reply_text('𝕤ᴇɴᴅ ᴛxᴛ ғɪʟᴇ ⚡️')
@@ -170,9 +170,9 @@ async def upload(bot: Client, m: Message):
     await input3.delete(True)
 
     # Default credit message
-    credit = "️@Oye_brijesh 🕊️⁪⁬⁮⁮⁮"
+    credit = "️@monuchoudhary008 😎⁪⁬⁮⁮⁮"
     if raw_text3 == '1':
-        CR = '@Oye_brijesh 🕊️'
+        CR = '@monuchoudhary008 😎'
     elif raw_text3:
         CR = raw_text3
     else:
