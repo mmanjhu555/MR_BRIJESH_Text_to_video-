@@ -1,37 +1,22 @@
-# Use a Python 3.9.6 Alpine base image
-FROM python:3.9.6-alpine3.14
+#FROM python:3.9.7-slim-buster
+FROM python:3.10.8-slim-buster
 
-# Set the working directory
-WORKDIR /app
+RUN apt-get update -y && apt-get upgrade -y \
+    && apt-get install -y --no-install-recommends gcc libffi-dev musl-dev ffmpeg aria2 python3-pip \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
-# Copy all files from the current directory to the container's /app directory
-COPY . .
+COPY . /app/
+WORKDIR /app/
+RUN pip3 install --no-cache-dir --upgrade -r Installer
 
-# Install necessary dependencies
-RUN apk add --no-cache \
-    gcc \
-    libffi-dev \
-    musl-dev \
-    ffmpeg \
-    aria2 \
-    make \
-    g++ \
-    cmake
+RUN pip3 install pytube
 
-# Install Bento4
-RUN wget -q https://github.com/axiomatic-systems/Bento4/archive/v1.6.0-639.zip && \
-    unzip v1.6.0-639.zip && \
-    cd Bento4-1.6.0-639 && \
-    mkdir build && \
-    cd build && \
-    cmake .. && \
-    make -j$(nproc) && \
-    cp mp4decrypt /usr/local/bin/ &&\
-    cd ../.. && \
-    rm -rf Bento4-1.6.0-639 v1.6.0-639.zip
+RUN pip3 install yt-dlp
 
+RUN pip3 install cloudscraper
 
-RUN pip install --no-cache-dir -r requirements.txt
+ENV COOKIES_FILE_PATH="/app/youtube_cookies.txt"
 
-# Set the command to run the application
-CMD ["sh", "-c", "gunicorn app:app & python3 main.py"]
+#CMD ["python3", "modules/main.py"]
+CMD gunicorn app:app & python3 main.py
