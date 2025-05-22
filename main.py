@@ -74,7 +74,7 @@ async def main():
     except (KeyboardInterrupt, SystemExit):
         await stop_bot()
     
-@bot.on_message(filters.command(["monu"]))
+@bot.on_message(filters.command(["start"]))
 async def account_login(bot: Client, m: Message):
     editable = await m.reply_text(
        "I Am A Bot For Download Links From Your **.TXT** File And Then Upload That File On Telegram So Basically If You Want To Use Me First Send Me ⟰ /monu Command And Then Follow Few Steps..", reply_markup=InlineKeyboardMarkup(
@@ -346,7 +346,7 @@ async def upload(bot: Client, m: Message):
     except Exception as e:
         await m.reply_text(e)
 
-    await m.reply_text(f"🔰DONE BABY💞🔰\nTotal failed downloads: {failed_count}")  # Report the failed count
+    await m.reply_text(f"Batch complete successfully 🎉\nTotal failed downloads: {failed_count}")  # Report the failed count
 
 
 
